@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.Map;
 
 public class PageGenerator {
-    private static final String HTML_PATH = "templates/shop/pages";
+    private static final String HTML_PATH = "src/main/resources/templates/shop/pages";
 
     private static PageGenerator pageGenerator;
     private final Configuration configuration;

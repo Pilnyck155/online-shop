@@ -11,15 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-//        int id = resultSet.getInt("product_id");
-//                String name = resultSet.getString("name");
-//                double price = resultSet.getDouble("price");
-//                Date date = resultSet.getDate("date");
-
-//    product_id SERIAL NOT NULL PRIMARY KEY,
-//            name VARCHAR (50) NOT NULL,
-//            price DECIMAL (10,2) NOT NULL,
-//            date DATE NOT NULL);
 
 class ProductRowMapperTest {
     @Test

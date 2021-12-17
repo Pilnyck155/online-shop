@@ -20,7 +20,6 @@ public class UserService {
 
     public void add(User user) {
         User updateUser = securityService.hashPasswordGenerator(user);
-        //String userToken = securityService.generateToken();
         userDao.add(updateUser);
         System.out.println("UserSecurity add user");
     }
@@ -35,16 +34,6 @@ public class UserService {
         User userFromRequest = getUserFromRequest(request);
         add(userFromRequest);
     }
-    //boolean isEmailExist
-
-
-//    public User findUserByToken(Cookies[] cookies) {
-//        for (Cookies cookie : cookies) {
-//            if (cookie.equals("user-token"))
-//        }
-//        //User user = userDao.findUserByEmail(email);
-//        return user;
-//    }
 
     public User getUserFromRequest(HttpServletRequest request) {
         User user = User.builder()
