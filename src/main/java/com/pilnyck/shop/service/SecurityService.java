@@ -11,20 +11,13 @@ import java.util.*;
 
 public class SecurityService {
     private List<String> userTokens = Collections.synchronizedList(new ArrayList<>());
-    private UserService userService;
+    //private UserService userService;
 
     public String generateToken() {
         String userToken = UUID.randomUUID().toString();
         userTokens.add(userToken);
         return userToken;
     }
-
-//    public String hashPasswordGenerator(User user){
-//        String password = user.getPassword();
-//        String sole = generateSole();
-//        String hashPassword = password + sole;
-//        return hashPassword;
-//    }
 
     public User hashPasswordGenerator(User user) {
         String sole = generateSole();
@@ -60,39 +53,15 @@ public class SecurityService {
         return false;
     }
 
-    /*
-    //check user from db
-    public boolean isAuthenticationUser(User userFromDB, String password){
-        //user from db
-        String sole = userFromDB.getSole();
-        String passwordFromDB = userFromDB.getPassword();
-        String checkHashPassword = password + sole;
-        if (checkHashPassword.contains(passwordFromDB)){
-            return true;
-        }
-        return  false;
-    }
-     */
-
-    //    public boolean isUserExist(HttpServletRequest request){
-//        User userFromRequest = getUserFromRequest(request);
-//        User userFromDB = findUserByEmail(userFromRequest.getEmail());
-//        if (userFromDB.getEmail().isEmpty()){
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }
     public boolean isAuthenticationUser(HttpServletRequest request) {
         User userFromRequest = getUserFromRequest(request);
         JdbcUserDao jdbcUserDao = new JdbcUserDao();
-        //user from db
         String email = userFromRequest.getEmail();
         User userFromDB = jdbcUserDao.findUserByEmail(email);
         if (userFromDB != null) {
             String sole = userFromDB.getSole();
             String passwordFromDB = userFromDB.getPassword();
-            String checkHashPassword = userFromRequest.getPassword() + sole;
+            String checkHashPassword = DigestUtils.sha256Hex(userFromRequest.getPassword() + sole);
             if (checkHashPassword.contains(passwordFromDB)) {
                 return true;
             }

@@ -19,14 +19,15 @@ public class SecurityFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-        //System.out.println("You are in filter now!");
 
-        if (httpServletRequest.getRequestURI().equals("/login")){
+        if (httpServletRequest.getRequestURI().equals("/login")) {
             filterChain.doFilter(servletRequest, servletResponse);
+            System.out.println("Security filter");
             return;
-        }else if(securityService.checkCookie(httpServletRequest)){
+        } else if (securityService.checkCookie(httpServletRequest)) {
+            System.out.println("Security filter check cookie");
             filterChain.doFilter(servletRequest, servletResponse);
-        }else {
+        } else {
             httpServletResponse.sendRedirect("/login");
         }
     }

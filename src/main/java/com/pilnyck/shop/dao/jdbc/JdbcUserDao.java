@@ -56,11 +56,6 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public boolean findUser(User user) {
-        return false;
-    }
-
-    @Override
     public User findUserByEmail(String email) {
         User user = null;
         try (Connection connection = getConnection()) {

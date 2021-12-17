@@ -9,8 +9,6 @@ import java.sql.Date;
 import java.util.*;
 
 public class UserService {
-    //private Map<String, String> userToken = new HashMap<>();
-    //private static final SecureRandom secureRandom;
     private List<String> userToken = new ArrayList<>();
     private UserDao userDao;
     private SecurityService securityService;
@@ -27,19 +25,13 @@ public class UserService {
         System.out.println("UserSecurity add user");
     }
 
-    public boolean findUser(User user) {
-        boolean isAuth = userDao.findUser(user);
-        return isAuth;
-    }
-
     public User findUserByEmail(String email) {
         User user = userDao.findUserByEmail(email);
         return user;
     }
 
 
-
-    public void creationUser(HttpServletRequest request){
+    public void creationUser(HttpServletRequest request) {
         User userFromRequest = getUserFromRequest(request);
         add(userFromRequest);
     }
