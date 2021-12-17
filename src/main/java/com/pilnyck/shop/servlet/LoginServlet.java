@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         if (securityService.isAuthenticationUser(request)){
             String userToken = securityService.generateToken();
+            System.out.println("user-token: " + userToken);
             Cookie cookie = new Cookie("user-token", userToken);
             resp.addCookie(cookie);
             //resp.addCookie(new Cookie("preferred-language", "ua"));
@@ -47,6 +48,7 @@ public class LoginServlet extends HttpServlet {
             userService.creationUser(request);
             String userToken = securityService.generateToken();
             Cookie cookie = new Cookie("user-token", userToken);
+            resp.addCookie(cookie);
             resp.sendRedirect("/");
         }
 //        User userFromRequest = userService.getUserFromRequest(request);

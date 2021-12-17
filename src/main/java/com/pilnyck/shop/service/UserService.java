@@ -15,8 +15,9 @@ public class UserService {
     private UserDao userDao;
     private SecurityService securityService;
 
-    public UserService(UserDao userDao) {
+    public UserService(UserDao userDao, SecurityService securityService) {
         this.userDao = userDao;
+        this.securityService = securityService;
     }
 
     public void add(User user) {

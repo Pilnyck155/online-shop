@@ -27,8 +27,8 @@ public class Starter {
 
         //service
         ProductService productService = new ProductService(jdbcProductDao);
-        UserService userService = new UserService(jdbcUserDao);
         SecurityService securityService = new SecurityService();
+        UserService userService = new UserService(jdbcUserDao, securityService);
 
         //servlets
         LoginServlet loginServlet = new LoginServlet(userService, securityService);

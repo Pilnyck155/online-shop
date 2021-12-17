@@ -41,7 +41,7 @@ public class SecurityService {
 
     private String generateSole() {
         SecureRandom secureRandom = new SecureRandom();
-        byte[] bytesArray = new byte[30];
+        byte[] bytesArray = new byte[20];
         secureRandom.nextBytes(bytesArray);
         String sole = bytesArray.toString();
         return sole;
@@ -89,7 +89,7 @@ public class SecurityService {
         //user from db
         String email = userFromRequest.getEmail();
         User userFromDB = jdbcUserDao.findUserByEmail(email);
-        if (!userFromDB.getEmail().isEmpty()) {
+        if (userFromDB != null) {
             String sole = userFromDB.getSole();
             String passwordFromDB = userFromDB.getPassword();
             String checkHashPassword = userFromRequest.getPassword() + sole;
