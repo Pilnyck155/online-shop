@@ -16,7 +16,15 @@
         <constructor-arg ref="productDao"/>
     </bean>
 
+    <bean id="userService" class="com.pilnyck.shop.service.UserService">
+        <constructor-arg ref="userDao"/>
+        <constructor-arg ref="securityService"/>
+    </bean>
+
     <bean id="productDao" class="com.pilnyck.shop.dao.jdbc.JdbcProductDao"/>
+    <bean id="userDao" class="com.pilnyck.shop.dao.jdbc.JdbcUserDao"/>
+    <bean id="securityService" class="com.pilnyck.shop.service.SecurityService"/>
+
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="classpath:templates/"/>

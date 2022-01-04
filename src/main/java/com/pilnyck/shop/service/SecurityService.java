@@ -11,7 +11,6 @@ import java.util.*;
 
 public class SecurityService {
     private List<String> userTokens = Collections.synchronizedList(new ArrayList<>());
-    //private UserService userService;
 
     public String generateToken() {
         String userToken = UUID.randomUUID().toString();
