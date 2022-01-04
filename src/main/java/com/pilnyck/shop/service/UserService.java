@@ -1,11 +1,9 @@
 package com.pilnyck.shop.service;
 
 import com.pilnyck.shop.dao.UserDao;
-import com.pilnyck.shop.entity.Product;
 import com.pilnyck.shop.entity.User;
-import jakarta.servlet.http.HttpServletRequest;
 
-import java.sql.Date;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 public class UserService {

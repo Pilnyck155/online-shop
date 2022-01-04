@@ -2,10 +2,10 @@ package com.pilnyck.shop.service;
 
 import com.pilnyck.shop.dao.jdbc.JdbcUserDao;
 import com.pilnyck.shop.entity.User;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.security.SecureRandom;
 import java.util.*;
 
