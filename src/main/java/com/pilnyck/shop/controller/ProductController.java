@@ -62,7 +62,6 @@ public class ProductController {
         System.out.println("Product id to edit: " + id);
         Product productToEdit = productService.findById(id);
         model.addAttribute("product", productToEdit);
-        ;
         return "edit_product";
     }
 

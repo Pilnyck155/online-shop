@@ -14,6 +14,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
+
 
 @Controller
 public class UserController {
@@ -30,21 +32,20 @@ public class UserController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    protected void checkAuthenticationUser(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+    protected String checkAuthenticationUser(HttpServletRequest request, HttpServletResponse resp, Model model) throws IOException {
         if (securityService.isAuthenticationUser(request)) {
             String userToken = securityService.generateToken();
             System.out.println("user-token: " + userToken);
             Cookie cookie = new Cookie("user-token", userToken);
             resp.addCookie(cookie);
-            resp.sendRedirect("/products");
-            return;
         } else {
+            System.out.println("In else block");
             userService.creationUser(request);
             String userToken = securityService.generateToken();
             Cookie cookie = new Cookie("user-token", userToken);
             resp.addCookie(cookie);
-            resp.sendRedirect("/products");
         }
+        return "redirect:/products";
     }
 
     public void setUserService(UserService userService) {
