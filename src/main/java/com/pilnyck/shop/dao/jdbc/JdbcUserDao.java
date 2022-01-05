@@ -26,7 +26,8 @@ public class JdbcUserDao implements UserDao {
     private static final String FIND_USER_BY_EMAIL = "SELECT email, h_password, sole FROM Users WHERE email = ?;";
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shop", "postgres", "postgres");
+        //return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shop", "postgres", "postgres");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:3000/shop", "postgres", "password");
     }
 /*
     public void createTable() {

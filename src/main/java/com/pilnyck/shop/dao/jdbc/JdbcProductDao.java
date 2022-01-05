@@ -103,6 +103,7 @@ public class JdbcProductDao implements ProductDao {
     }
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shop", "postgres", "postgres");
+        //return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shop", "postgres", "postgres");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:3000/shop", "postgres", "password");
     }
 }
